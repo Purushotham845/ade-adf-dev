@@ -1,0 +1,6 @@
+{
+	"ADLS_Path_Prifix": {
+		"type": "string",
+		"value": "abfss://adegen2container@adlsgen2containernew.dfs.core.windows.net"
+	}
+}

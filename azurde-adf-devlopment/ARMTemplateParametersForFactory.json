@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "azurde-adf-devlopment"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks_accessToken": {
+			"value": ""
+		},
+		"ls_adlsgen2_accountKey": {
+			"value": ""
+		},
+		"ls_azuresql_password": {
+			"value": ""
+		},
+		"ls_targetdatabase_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsgen2containernew.dfs.core.windows.net/"
+		},
+		"AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"value": "0421-140156-vesvkbjj"
+		},
+		"ls_adlsgen2_properties_typeProperties_url": {
+			"value": "https://practiceadegen2.dfs.core.windows.net"
+		},
+		"ls_azuresql_properties_typeProperties_server": {
+			"value": "newsqls.database.windows.net"
+		},
+		"ls_azuresql_properties_typeProperties_database": {
+			"value": "newdatabase"
+		},
+		"ls_azuresql_properties_typeProperties_userName": {
+			"value": "sql"
+		},
+		"ls_targetdatabase_properties_typeProperties_server": {
+			"value": "newsqls.database.windows.net"
+		},
+		"ls_targetdatabase_properties_typeProperties_database": {
+			"value": "targetdatabase"
+		},
+		"ls_targetdatabase_properties_typeProperties_userName": {
+			"value": "sql"
+		}
+	}
+}

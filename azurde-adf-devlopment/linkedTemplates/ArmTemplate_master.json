@@ -1,0 +1,160 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "azurde-adf-devlopment"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks'"
+		},
+		"ls_adlsgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adlsgen2'"
+		},
+		"ls_azuresql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_azuresql'"
+		},
+		"ls_targetdatabase_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_targetdatabase'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsgen2containernew.dfs.core.windows.net/"
+		},
+		"AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0421-140156-vesvkbjj"
+		},
+		"ls_adlsgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://practiceadegen2.dfs.core.windows.net"
+		},
+		"ls_azuresql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "newsqls.database.windows.net"
+		},
+		"ls_azuresql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "newdatabase"
+		},
+		"ls_azuresql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sql"
+		},
+		"ls_targetdatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "newsqls.database.windows.net"
+		},
+		"ls_targetdatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "targetdatabase"
+		},
+		"ls_targetdatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sql"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "azurde-adf-devlopment_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureDatabricks_accessToken": {
+						"value": "[parameters('AzureDatabricks_accessToken')]"
+					},
+					"ls_adlsgen2_accountKey": {
+						"value": "[parameters('ls_adlsgen2_accountKey')]"
+					},
+					"ls_azuresql_password": {
+						"value": "[parameters('ls_azuresql_password')]"
+					},
+					"ls_targetdatabase_password": {
+						"value": "[parameters('ls_targetdatabase_password')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_adlsgen2_properties_typeProperties_url": {
+						"value": "[parameters('ls_adlsgen2_properties_typeProperties_url')]"
+					},
+					"ls_azuresql_properties_typeProperties_server": {
+						"value": "[parameters('ls_azuresql_properties_typeProperties_server')]"
+					},
+					"ls_azuresql_properties_typeProperties_database": {
+						"value": "[parameters('ls_azuresql_properties_typeProperties_database')]"
+					},
+					"ls_azuresql_properties_typeProperties_userName": {
+						"value": "[parameters('ls_azuresql_properties_typeProperties_userName')]"
+					},
+					"ls_targetdatabase_properties_typeProperties_server": {
+						"value": "[parameters('ls_targetdatabase_properties_typeProperties_server')]"
+					},
+					"ls_targetdatabase_properties_typeProperties_database": {
+						"value": "[parameters('ls_targetdatabase_properties_typeProperties_database')]"
+					},
+					"ls_targetdatabase_properties_typeProperties_userName": {
+						"value": "[parameters('ls_targetdatabase_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "azurde-adf-devlopment_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'azurde-adf-devlopment_ArmTemplate_0')]"
+			]
+		}
+	]
+}
