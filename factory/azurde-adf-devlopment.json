@@ -1,0 +1,17 @@
+{
+	"name": "azurde-adf-devlopment",
+	"properties": {
+		"globalParameters": {
+			"ADLS_Path_Prifix": {
+				"type": "string",
+				"value": "abfss://adegen2container@adlsgen2containernew.dfs.core.windows.net"
+			}
+		}
+	},
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2d012487-e708-42c8-b3b0-71b4760a3a02",
+		"tenantId": "5fac0a6e-b565-4e7d-bf17-90962f7f1fb4"
+	}
+}
